@@ -3,6 +3,8 @@ let ctx = cnv.getContext("2d");
 let color = "black";
 let background = document.getElementById("background");
 let width = 30;
+let tool = "Кисточка";
+let button = document.getElementById("tool");
 
 let displayWidth = cnv.clientWidth;
 let displayHeight = cnv.clientHeight;
@@ -43,4 +45,16 @@ background.addEventListener('input', changeBackground);
 function changeBackground(){
     ctx.fillStyle = background.value;
     ctx.fillRect(0, 0, cnv.width, cnv.height);
+}
+
+button.addEventListener("click", changeTool);
+
+function changeTool(){
+    let btn = document.getElementById("tool");
+    if(btn.textContent == "Кисточка"){
+        btn.textContent = "Ластик";
+    }
+    else{
+        btn.textContent = "Кисточка";
+    }
 }
