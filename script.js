@@ -1,5 +1,7 @@
 let cnv = document.getElementById("canvas");
+let cnv_bg = document.getElementById("bg_layer");
 let ctx = cnv.getContext("2d");
+let ctx_bg = cnv_bg.getContext("2d");
 let color = document.getElementById("color").value;
 let background = document.getElementById("background");
 let width = 30;
@@ -11,8 +13,10 @@ let displayWidth = cnv.clientWidth;
 let displayHeight = cnv.clientHeight;
 cnv.width = displayWidth;
 cnv.height = displayHeight;
-ctx.fillStyle = background.value;
-ctx.fillRect(0, 0, cnv.width, cnv.height);
+cnv_bg.width = displayWidth;
+cnv_bg.height = displayHeight;
+ctx_bg.fillStyle = background.value;
+ctx_bg.fillRect(0, 0, cnv_bg.width, cnv_bg.height);
 
 document.getElementById("color").oninput = function(){
     color = this.value;
@@ -25,6 +29,7 @@ document.getElementById("size").oninput = function(){
 document.getElementById("save_image").onclick = function(){
     let image = cnv.toDataURL("image/jpg");
     this.href = image;
+    
 }
 
 cnv.onmousedown = (e) => {
@@ -50,8 +55,8 @@ cnv.onmousedown = (e) => {
 background.addEventListener('input', changeBackground);
 
 function changeBackground(){
-    ctx.fillStyle = background.value;
-    ctx.fillRect(0, 0, cnv.width, cnv.height);
+    ctx_bg.fillStyle = background.value;
+    ctx_bg.fillRect(0, 0, cnv_bg.width, cnv_bg.height);
 }
 
 button_tool.addEventListener("click", changeTool);

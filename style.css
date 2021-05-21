@@ -16,12 +16,34 @@ body{
     height: 80%;
     border: darkslategray 5px solid;
     margin: auto;
+    position: relative;
 }
 
 #canvas{
     width: 100%;
     height: 100%;
     cursor: cell;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+}
+
+#bg_layer{
+    width: 100%;
+    height: 100%;
+    cursor: cell;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+}
+
+#save_canvas{
+    width: 100%;
+    height: 100%;
+    cursor: cell;
+    z-index: 0;
+    position: absolute;
+    left: 0;
 }
 
 .flexContainer{
