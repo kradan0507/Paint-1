@@ -27,9 +27,13 @@ document.getElementById("size").oninput = function(){
 }
 
 document.getElementById("save_image").onclick = function(){
-    let image = cnv.toDataURL("image/jpg");
+    let cnv_save = document.getElementById("save_canvas");
+    let ctx_save = cnv_save.getContext("2d");
+    ctx_save.drawImage(cnv_bg, 0, 0);
+    ctx_save.drawImage(cnv, 0, 0);
+    cnv_save.style.zIndex = 5;
+    let image = cnv_save.toDataURL("image/jpg");
     this.href = image;
-    
 }
 
 cnv.onmousedown = (e) => {
