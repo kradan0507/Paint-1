@@ -1,7 +1,7 @@
 let cnv = document.getElementById("canvas");
 let ctx = cnv.getContext("2d");
-let color = "black";
-let background = document.getElementById("background");
+let color = document.getElementById("color").value;
+let background = document.getElementById("background").value;
 let width = 30;
 let tool = "Кисточка";
 let button = document.getElementById("tool");
@@ -10,7 +10,7 @@ let displayWidth = cnv.clientWidth;
 let displayHeight = cnv.clientHeight;
 cnv.width = displayWidth;
 cnv.height = displayHeight;
-ctx.fillStyle = background.value;
+ctx.fillStyle = background;
 ctx.fillRect(0, 0, cnv.width, cnv.height);
 
 document.getElementById("color").oninput = function(){
@@ -29,11 +29,17 @@ document.getElementById("save_image").onclick = function(){
 cnv.onmousedown = (e) => {
     setTimeout(() => {
         cnv.onmousemove = (event) => {
-            ctx.fillStyle = color;
+            if(tool == "Кисточка")
+                ctx.fillStyle = color;
+            else
+                ctx.fillStyle = background.value;
             ctx.fillRect(event.offsetX - width/2, event.offsetY- width/2, width, width);
         };
     }, 1);
-    ctx.fillStyle = color;
+    if(tool == "Кисточка")
+                ctx.fillStyle = color;
+            else
+                ctx.fillStyle = background.value;
     ctx.fillRect(e.offsetX - width/2, e.offsetY- width/2, width, width);
     cnv.onmouseup = () => {
         cnv.onmousemove = null;
@@ -53,8 +59,10 @@ function changeTool(){
     let btn = document.getElementById("tool");
     if(btn.textContent == "Кисточка"){
         btn.textContent = "Ластик";
+        tool = "Ластик";
     }
     else{
         btn.textContent = "Кисточка";
+        tool = "Кисточка";
     }
 }
