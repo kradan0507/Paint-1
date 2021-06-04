@@ -11,8 +11,26 @@
     <h1>Мой Paint</h1>
     <div id="container">
         <canvas id="canvas"></canvas>
+        <canvas id="bg_layer"></canvas>
+        <canvas id="save_canvas"></canvas>
     </div>
-    <input type="color" id="color" value="#000000">
+    <div class = "flexContainer">
+        <div class="item">
+            Цвет кисточки
+            <input type="color" id="color" value="#ffffff">
+        </div>
+        <div class="item">
+            Цвет фона
+            <input type="color" id="background" value="#000000">
+        </div>
+        <div class="item">
+            Сейчас выбран инструмент
+            <button id="tool">Кисточка</button>
+        </div>
+        <div class="item">
+            <button id="clear">Очистить холст</button>
+        </div>
+    </div>
     <input type="range" id="size" min="5" max="100" step="1" value="50">
     <a download="myImage.jpg" id="save_image">Сохранить картинку</a>
     <script src="script.js"></script>
